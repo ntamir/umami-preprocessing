@@ -1,0 +1,67 @@
+variables: !include ditau-variables.yaml
+
+qcd: &qcd
+  name: qcd
+  pattern: "QCD/jet_samp*.h5"
+
+tau: &tau
+  name: tau
+  pattern: "signal/tau_samp*.h5"
+
+global_cuts:
+  train:
+    - [eventNumber, "%10<=", 7]
+  val:
+    - [eventNumber, "%10==", 8]
+  test:
+    - [eventNumber, "%10>=", 8]
+
+lowpt: &lowpt
+  name: lowpt
+  cuts:
+    # []
+    - [pt, ">=", 10_000]
+    # - [pt, "<=", 150_000]
+
+components:
+  - region:
+      <<: *lowpt
+    sample:
+      <<: *qcd
+    flavours: [ujets]
+    # tot_jets: 135_000_000
+    # num_jets: 106_816_000
+    num_jets: 1_750_000
+    # num_jets_val: 7_400_000
+    num_jets_test: 500_000
+
+  - region:
+      <<: *lowpt
+    sample:
+      <<: *tau
+    flavours: [bjets]
+    # tot_jets: 16_338_880
+    num_jets: 400_000
+    # num_jets_val: 1_600_000
+    num_jets_test: 100_000
+
+resampling:
+  target: bjets
+  method: countup
+  sampling_fraction: 1.0
+  variables:
+    pt:
+      bins: [[10_000, 1_000_000, 50]]
+    absEta:
+      bins: [[0, 2.5, 20]]
+
+# note: sensible defaults are defined in the PreprocessingConfig constructor
+global:
+  jets_name: jets
+  batch_size: 100_000
+  num_jets_estimate: 1_000_000
+  base_dir: /afs/cern.ch/work/n/ntamir/private/GNTau_Project/
+  ntuple_dir: /eos/user/n/ntamir/BoostDitau_run3/GNN_ntups/local_preprocess/
+  out_dir: /eos/user/n/ntamir/BoostDitau_run3/GNN_ntups/UPP_preprocess/
+  merge_test_samples: True
+

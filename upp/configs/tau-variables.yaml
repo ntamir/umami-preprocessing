@@ -2,82 +2,84 @@ jets:
   inputs:
     - absEta
     - pt
-    - TAU_centFrac
-    - TAU_sumEMCellEtOverLeadTrkPt
-    - TAU_dRmax
-    - TAU_trFlightPathSig
-    - TAU_etOverPtLeadTrk
-    - TAU_ptRatioEflowApprox
-    - TAU_mEflowApprox
-    - TAU_massTrkSys
-    - TAU_SumPtTrkFrac
-    - TAU_EMPOverTrkSysP
-    - TAU_isolFrac
-    - "TAU_GNTauProbTau"
-    - "TAU_GNTauProbJet"
-    - "TAU_GNTauScore"
+    - TauJets.centFrac
+    - TauJets.sumEMCellEtOverLeadTrkPt
+    - TauJets.dRmax
+    - TauJets.trFlightPathSig
+    - TauJets.etOverPtLeadTrk
+    - TauJets.ptRatioEflowApprox
+    - TauJets.mEflowApprox
+    - TauJets.massTrkSys
+    - TauJets.SumPtTrkFrac
+    - TauJets.EMPOverTrkSysP
+    - TauJets.isolFrac
+    - "TauJets.GNTauProbTau"
+    - "TauJets.GNTauProbJet"
+    - "TauJets.GNTauScore"
   labels:
     - HadronConeExclTruthLabelID
 
 tracks:
   inputs:
-    - trackPt
-    - trackEta
-    - trackPhi
-    - numberOfInnermostPixelLayerHits
-    - numberOfPixelHits
-    - numberOfPixelSharedHits
-    - numberOfPixelDeadSensors
-    - numberOfSCTHits
-    - numberOfSCTSharedHits
-    - numberOfSCTDeadSensors
-    - numberOfTRTHighThresholdHits
-    - numberOfTRTHits
-    - nPixHits
-    - nSCTHits
-    - nSiHits
-    - nIBLHitsAndExp
-    - expectInnermostPixelLayerHit
-    - expectNextToInnermostPixelLayerHit
-    - numberOfContribPixelLayers
-    - numberOfPixelHoles
-    - d0_old
-    - qOverP
-    - theta
-    - z0sinthetaSigTJVA
-    - z0sinthetaTJVA
-    - d0SigTJVA
-    - d0TJVA
-    - z0TJVA
-    - dz0_TV_PV0
-    - log_sumpt_TV
-    - log_sumpt2_TV
-    - log_sumpt_PV0
-    - log_sumpt2_PV0
-    - rConv
-    - rConvII
-    - charge
-    - "rnn_chargedScore"
-    - "rnn_isolationScore"
-    - "rnn_conversionScore"
-    - "rnn_fakeScore"
+    - TauTracks.dEtaJetSeedAxis
+    - TauTracks.dPhiJetSeedAxis
+    - TauTracks.trackPt
+    - TauTracks.trackEta
+    - TauTracks.trackPhi
+    - TauTracks.numberOfInnermostPixelLayerHits
+    - TauTracks.numberOfPixelHits
+    - TauTracks.numberOfPixelSharedHits
+    - TauTracks.numberOfPixelDeadSensors
+    - TauTracks.numberOfSCTHits
+    - TauTracks.numberOfSCTSharedHits
+    - TauTracks.numberOfSCTDeadSensors
+    - TauTracks.numberOfTRTHighThresholdHits
+    - TauTracks.numberOfTRTHits
+    - TauTracks.nPixHits
+    - TauTracks.nSCTHits
+    - TauTracks.nSiHits
+    - TauTracks.nIBLHitsAndExp
+    - TauTracks.expectInnermostPixelLayerHit
+    - TauTracks.expectNextToInnermostPixelLayerHit
+    - TauTracks.numberOfContribPixelLayers
+    - TauTracks.numberOfPixelHoles
+    - TauTracks.d0_old
+    - TauTracks.qOverP
+    - TauTracks.theta
+    - TauTracks.z0sinthetaSigTJVA
+    - TauTracks.z0sinthetaTJVA
+    - TauTracks.d0SigTJVA
+    - TauTracks.d0TJVA
+    - TauTracks.z0TJVA
+    - TauTracks.dz0_TV_PV0
+    - TauTracks.log_sumpt_TV
+    - TauTracks.log_sumpt2_TV
+    - TauTracks.log_sumpt_PV0
+    - TauTracks.log_sumpt2_PV0
+    - TauTracks.rConv
+    - TauTracks.rConvII
+    - TauTracks.charge
+    - "TauTracks.rnn_chargedScore"
+    - "TauTracks.rnn_isolationScore"
+    - "TauTracks.rnn_conversionScore"
+    - "TauTracks.rnn_fakeScore"
   labels:
-    - tauTruthProng
-    - tauTruthDecayMode
-    - NewTruthType
+    - TauJets.tauTruthProng
+    - TauJets.tauTruthDecayMode
+    - TauTracks.NewTruthType
 
 cells:
   inputs:
-    - TAU_cls_e
-    - TAU_cls_et
-    - TAU_cls_dPhi
-    - TAU_cls_dEta
-    - TAU_cls_SECOND_R
-    - TAU_cls_SECOND_LAMBDA
-    - TAU_cls_FIRST_ENG_DENS
-    - TAU_cls_EM_PROBABILITY
-    - TAU_cls_CENTER_MAG
-    - TAU_cls_CENTER_LAMBDA
+    - TauClusters.cls_e
+    - TauClusters.cls_et
+    - TauClusters.cls_dPhi
+    - TauClusters.cls_dEta
+    - TauClusters.cls_SECOND_R
+    - TauClusters.cls_SECOND_LAMBDA
+    - TauClusters.cls_FIRST_ENG_DENS
+    - TauClusters.cls_EM_PROBABILITY
+    - TauClusters.cls_CENTER_MAG
+    - TauClusters.cls_CENTER_LAMBDA
   # labels:
   #   - HadronConeExclTruthLabelID
 #flow:
