@@ -1,0 +1,59 @@
+variables: !include/afs/cern.ch/work/n/ntamir/private/GNTau_Project/umami-preprocessing/upp/configs/tau-variables.yaml
+
+qcd: &qcd
+  name: qcd
+  pattern: "qcd/user.ntamir.*._*.labeled_*.h5"
+
+tau: &tau
+  name: tau
+  pattern: "tau/user.ntamir.*._*.labeled_*.h5"
+
+global_cuts:
+  common:
+    - [eventNumber, ">=", 0]
+    - [TauJets.pt, ">=", 15_000]
+  train:
+    - [eventNumber, "%10<=", 7]
+  val:
+    - [eventNumber, "%10==", 8]
+  test:
+    - [eventNumber, "%10>=", 9]
+
+inclusive: &inclusive
+  name: inclusive
+  cuts:
+    - [TauJets.pt, ">=", 15_000]
+
+components:
+  - region:
+      <<: *inclusive
+    sample:
+      <<: *qcd
+    flavours: [ujets]
+    num_jets: 172_042_140
+
+  - region:
+      <<: *inclusive
+    sample:
+      <<: *tau
+    flavours: [bjets]
+    num_jets: 30_390_510
+
+resampling:
+  target: bjets
+  method: pdf
+  sampling_fraction: 1.0
+  variables:
+    TauJets.pt:
+      bins: [[15_000, 100_000, 85], [100_000, 500_000, 40], [500_000, 3_500_000, 60]]
+      # bins: [[15_000, 3_500_000, 50]]
+    absEta:
+      bins: [[0, 2.5, 25]]
+
+global:
+  jets_name: jets
+  batch_size: 5_000_000
+  num_jets_estimate: 50_000_000
+  # num_jets_estimate_norm: 1_000_000 # <-- not recognized ?!
+  base_dir: /storage/agrp/dreyet/GNtau/samples/v06/
+  merge_test_samples: True

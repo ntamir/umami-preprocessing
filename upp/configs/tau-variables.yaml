@@ -1,0 +1,100 @@
+jets:
+  inputs:
+    - TauJets.pt
+    - TauJets.eta
+    - absEta
+    - TauJets.nChargedTracks
+    # - TauJets.weight
+    - TauJets.RNNJetScore
+    - TauJets.RNNJetScoreSigTrans
+    - TauJets.centFrac
+    - TauJets.sumEMCellEtOverLeadTrkPt
+    - TauJets.dRmax
+    - TauJets.trFlightPathSig
+    - TauJets.etOverPtLeadTrk
+    - TauJets.ptRatioEflowApprox
+    - TauJets.mEflowApprox
+    - TauJets.massTrkSys
+    - TauJets.SumPtTrkFrac
+    - TauJets.EMPOverTrkSysP
+    - TauJets.isolFrac
+    # - TauJets.ipSigLeadTrk
+  labels:
+    - TauJets.mu
+    - TauJets.mcEventWeights
+    - eventNumber
+    - TauJets.mcChannelNumber
+    - HadronConeExclTruthLabelID
+
+tracks:
+  inputs:
+    - TauTracks.z0sinthetaSigTJVA
+    - TauTracks.z0sinthetaTJVA
+    - TauTracks.d0SigTJVA
+    - TauTracks.d0TJVA
+    - TauTracks.dz0_TV_PV0
+    - TauTracks.log_sumpt_TV
+    - TauTracks.log_sumpt2_TV
+    - TauTracks.log_sumpt_PV0
+    - TauTracks.log_sumpt2_PV0
+    # - TauTracks.isLRT
+    # - TauTracks.tauPt
+    # - TauTracks.tauEta
+    # - TauTracks.tauPhi
+    - TauTracks.dEtaJetSeedAxis
+    - TauTracks.dPhiJetSeedAxis
+    - TauTracks.dRJetSeedAxis
+    - TauTracks.tauPtIntermediateAxis
+    - TauTracks.dRIntermediateAxis
+    - TauTracks.tauPtDetectorAxis
+    - TauTracks.dRDetectorAxis
+    - TauTracks.rConv
+    - TauTracks.rConvII
+    - TauTracks.charge
+    - TauTracks.trackPt
+    - TauTracks.trackEta
+    - TauTracks.trackPhi
+    - TauTracks.numberOfInnermostPixelLayerHits
+    - TauTracks.numberOfPixelHits
+    - TauTracks.numberOfPixelSharedHits
+    - TauTracks.numberOfPixelDeadSensors
+    - TauTracks.numberOfSCTHits
+    - TauTracks.numberOfSCTSharedHits
+    - TauTracks.numberOfSCTDeadSensors
+    - TauTracks.numberOfTRTHighThresholdHits
+    - TauTracks.numberOfTRTHits
+    - TauTracks.nPixHits
+    - TauTracks.nSCTHits
+    - TauTracks.nSiHits
+    - TauTracks.nIBLHitsAndExp
+    - TauTracks.expectInnermostPixelLayerHit
+    - TauTracks.expectNextToInnermostPixelLayerHit
+    - TauTracks.numberOfContribPixelLayers
+    - TauTracks.numberOfPixelHoles
+    - TauTracks.numberOfSCTHoles
+    - TauTracks.rnn_chargedScore
+    - TauTracks.rnn_isolationScore
+    - TauTracks.rnn_conversionScore
+    - TauTracks.rnn_fakeScore
+  labels:
+    - TauTracks.TruthType
+    - TauTracks.NewTruthType
+    - TauTracks.truthJetType
+    - TauTracks.tauTruthProng
+    - TauTracks.tauTruthDecayMode
+    - TauTracks.tauTruthCharge
+    - TauTracks.truthParticleOrigin
+    - TauTracks.truthParticleType
+
+cells:
+  inputs:
+    # - TauClusters.cls_e
+    - TauClusters.cls_et
+    - TauClusters.cls_dPhi
+    - TauClusters.cls_dEta
+    - TauClusters.cls_SECOND_R
+    - TauClusters.cls_SECOND_LAMBDA
+    - TauClusters.cls_FIRST_ENG_DENS
+    - TauClusters.cls_EM_PROBABILITY
+    - TauClusters.cls_CENTER_MAG
+    - TauClusters.cls_CENTER_LAMBDA
