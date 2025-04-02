@@ -18,6 +18,12 @@ jets:
     - TauJets.SumPtTrkFrac
     - TauJets.EMPOverTrkSysP
     - TauJets.isolFrac
+    - "TauJets.GNTauProbTau"
+    - "TauJets.GNTauProbJet"
+    - "TauJets.GNTauScore"
+    - "TauJets.TestGNTauProbTau"
+    - "TauJets.TestGNTauProbJet"
+    - "TauJets.TestGNTauScore"
     # - TauJets.ipSigLeadTrk
   labels:
     - TauJets.mu

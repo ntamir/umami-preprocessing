@@ -1,59 +1,62 @@
-variables: !include/afs/cern.ch/work/n/ntamir/private/GNTau_Project/umami-preprocessing/upp/configs/tau-variables.yaml
+variables: !include tau-variables.yaml
 
 qcd: &qcd
   name: qcd
-  pattern: "qcd/user.ntamir.*._*.labeled_*.h5"
+  pattern: "qcd/jet_samp*.h5"
 
 tau: &tau
   name: tau
-  pattern: "tau/user.ntamir.*._*.labeled_*.h5"
+  pattern: "tau/tau_samp*.h5"
 
 global_cuts:
-  common:
-    - [eventNumber, ">=", 0]
-    - [TauJets.pt, ">=", 15_000]
   train:
-    - [eventNumber, "%10<=", 7]
+    - [eventNumber, "%10<=", 0]
   val:
-    - [eventNumber, "%10==", 8]
+    - [eventNumber, "%10==", 0]
   test:
-    - [eventNumber, "%10>=", 9]
+    - [eventNumber, "%10>=", 0]
 
-inclusive: &inclusive
-  name: inclusive
+lowpt: &lowpt
+  name: lowpt
   cuts:
-    - [TauJets.pt, ">=", 15_000]
+    []
+    # - [pt, ">=", 20_000]
+    # - [pt, "<=", 150_000]
 
 components:
   - region:
-      <<: *inclusive
+      <<: *lowpt
     sample:
       <<: *qcd
     flavours: [ujets]
-    num_jets: 172_042_140
+    num_jets: 1
+    # num_jets_val: 7_400_000
+    num_jets_test: 500
 
   - region:
-      <<: *inclusive
+      <<: *lowpt
     sample:
       <<: *tau
     flavours: [bjets]
-    num_jets: 30_390_510
+    num_jets: 1
+    # num_jets_val: 1_600_000
+    num_jets_test: 500
 
 resampling:
   target: bjets
-  method: pdf
-  sampling_fraction: 1.0
+  method: none
+  sampling_fraction: None
   variables:
-    TauJets.pt:
-      bins: [[15_000, 100_000, 85], [100_000, 500_000, 40], [500_000, 3_500_000, 60]]
-      # bins: [[15_000, 3_500_000, 50]]
+    TauJets.tauPt:
+      bins: [[5_000, 3_000_000,30]]
     absEta:
-      bins: [[0, 2.5, 25]]
+      bins: [[0, 2.5, 20]]
 
+# note: sensible defaults are defined in the PreprocessingConfig constructor
 global:
   jets_name: jets
-  batch_size: 5_000_000
-  num_jets_estimate: 50_000_000
-  # num_jets_estimate_norm: 1_000_000 # <-- not recognized ?!
-  base_dir: /storage/agrp/dreyet/GNtau/samples/v06/
+  batch_size: 1000
+  num_jets_estimate: 10
+  base_dir: /afs/cern.ch/work/n/ntamir/private/GNTau_Project/
+  ntuple_dir: /afs/cern.ch/work/n/ntamir/private/GNTau_Project/ntuples/
   merge_test_samples: True
